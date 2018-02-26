@@ -282,6 +282,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Control_Fondo.cs" />
+    <Compile Include="Assets\Scripts\Menu_principal.cs" />
+    <Compile Include="Assets\Scripts\Nuevo_Juego.cs" />
     <Compile Include="Assets\Scripts\Pausa_Scr.cs" />
     <Compile Include="Assets\Scripts\Script_Micro.cs" />
   </ItemGroup>

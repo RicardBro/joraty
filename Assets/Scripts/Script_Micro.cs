@@ -24,7 +24,7 @@ public class Script_Micro : MonoBehaviour {
 	void Update () {
         print(EstadoActual);
         if (EstadoActual == Estados.micro) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/SilverDia");
+            imagen.sprite = Resources.Load<Sprite>("Graphics/Micro");
             micro();
         }
         else if (EstadoActual == Estados.chofer) {

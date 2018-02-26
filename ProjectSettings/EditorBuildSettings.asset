@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Escenas/Escenario-MenuPrincpal.unity
+    guid: cd7ad4d7e65c22b43a20b991005b5acf
+  - enabled: 1
     path: Assets/Escenas/Escenario-MicroAveriado.unity
     guid: ee9a37a45845282478e5159029f9e6bf
