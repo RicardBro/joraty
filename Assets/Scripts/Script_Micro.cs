@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Script_Micro : MonoBehaviour {
+public class Script_Micro : MonoBehaviour
+{
 
     public Text texto;
     public Image imagen;
 
-    private enum Estados{
+    private enum Estados
+    {
         micro, micro_r, chofer, linterna, micro_linterna,
         micro_r_linterna, chofer_linterna, llave, ataque
-    };
+    }
 
     Estados EstadoActual;
     
@@ -21,40 +24,62 @@ public class Script_Micro : MonoBehaviour {
         imagen = GameObject.Find("Panel").GetComponent<Image>();
     }
 	
-	void Update () {
+	void Update ()
+    {
         print(EstadoActual);
-        if (EstadoActual == Estados.micro) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/Micro");
-            micro();
+
+        switch (EstadoActual)
+        {
+            case (Estados.micro):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/Micro");
+                Micro();
+                break;
+
+            case (Estados.micro_r):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/Tauren");
+                Micro_r();
+                break;
+
+            case (Estados.chofer):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/SilverNoche");
+                Chofer();
+                break;
+
+            case (Estados.linterna):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/Purga");
+                Linterna();
+                break;
+
+            case (Estados.micro_linterna):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/PanSolido");
+                Micro_linterna();
+                break;
+
+            case (Estados.micro_r_linterna):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/Bobafett");
+                Micro_r_linterna();
+                break;
+
+            case (Estados.chofer_linterna):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/Chiste");
+                Chofer_linterna();
+                break;
+
+            case (Estados.llave):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/Lali");
+                Llave();
+                break;
+
+            case (Estados.ataque):
+                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                Ataque();
+                break;
         }
-        else if (EstadoActual == Estados.chofer) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/SilverNoche");
-            chofer(); }
-        else if (EstadoActual == Estados.micro_r) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/Tauren");
-            micro_r(); }
-        else if (EstadoActual == Estados.linterna) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/Purga");
-            linterna(); }
-        else if (EstadoActual == Estados.micro_linterna) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/PanSolido");
-            micro_linterna(); }
-        else if (EstadoActual == Estados.micro_r_linterna) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/Bobafett");
-            micro_r_linterna(); }
-        else if (EstadoActual == Estados.chofer_linterna) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/Chiste");
-            chofer_linterna(); }
-        else if (EstadoActual == Estados.llave) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/Lali");
-            llave(); }
-        else if (EstadoActual == Estados.ataque) {
-            imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
-            ataque(); }
     }
 
+    
     //Metodos de los estados
-    void micro(){
+    void Micro(){
         texto.text ="El micro se detiene a la mitad de la noche luego de un fuerte sonido, como una explosion.\n" +
                     "El chofer y vos bajan del vehiculo para averiguar que es lo que pasa. Humo sale de la parte trasera y " +
                     "el chofer se adelanta para ver que sucedio con una de las ruedas.\nRecuerdas que afortunadamente tienes tu" +
@@ -65,7 +90,7 @@ public class Script_Micro : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.L)) { EstadoActual = Estados.linterna; }
     }
 
-    void chofer(){
+    void Chofer(){
         texto.text ="Te acercas al chofer y lo observas agarrandose la cabeza. Una cubierta reventada.\n" +
                     "Le preguntas como piensa solucionar " +
                     "esta situacion, a lo que el te contesta: \n-No tengo la herramienta para el trabajo. \nToda tu esperanza " +
@@ -74,7 +99,7 @@ public class Script_Micro : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.micro; }
     }
 
-    void micro_r(){
+    void Micro_r(){
         texto.text ="Un agujero en el canio de escape, seguramente producido por el golpe que sufrimos, hizo que humo se " +
                     "concentrara en la parte trasera del vehiculo. No crees poder hacer nada al respecto.\n" +
                     "Es dificil respirar aqui.\n\n" +
@@ -82,7 +107,7 @@ public class Script_Micro : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.micro; }
     }
 
-    void linterna()
+    void Linterna()
     {
         texto.text ="Sacas tu confiable linterna de bolsillo.\nLED, alcance de 80 metros e intensidad regulable, con solo 3 pilas AAA" +
                     " para darte una duracion de casi 30 horas. De todos modos, debo usar el tiempo con sabiduria.\n\n" +
@@ -91,7 +116,7 @@ public class Script_Micro : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.E)) { EstadoActual = Estados.micro_linterna; }
     }
 
-    void micro_linterna()
+    void Micro_linterna()
     {
         texto.text = "Bueno, el micro sigue humeando, inclinado y parado. El chofer sigue sin hacer nada, mas que agarrarse la cabeza y " +
                     "mirarte un tanto extraniado.\nTodo esto bajo la luz de tu hermosa linterna. No sabes exactamente que estas " +
@@ -102,7 +127,7 @@ public class Script_Micro : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.A)) { EstadoActual = Estados.llave; }
         else if (Input.GetKeyDown(KeyCode.M)) { EstadoActual = Estados.micro_r_linterna; }
     }
-    void micro_r_linterna()
+    void Micro_r_linterna()
     {
         texto.text = "El humo se ha disipado un poco, aunque aun es dificultoso respirar.\nCon esta claridad, puedes ver como el canio de " +
                     "escape del vehiculo esta doblado, probablemente por el golpe que sufrio contra la banquina. Es reparable, pero no sin " +
@@ -111,7 +136,7 @@ public class Script_Micro : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.micro_linterna; }
     }
 
-    void chofer_linterna()
+    void Chofer_linterna()
     {
         texto.text = "Ahora puedes ver como el chofer se lamenta pero con una claridad que antes no podias imaginar. Realmente " +
                     "la tecnologia LED tiene mucho que ofrecer. Escuchas que el chofer murmulla algo, una cancion tal vez...\n\n" +
@@ -119,7 +144,7 @@ public class Script_Micro : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.micro_linterna; }
     }
 
-    void llave()
+    void Llave()
     {
         texto.text = "Al acercarte, oyes extranios ruidos provenientes del bosque. Lo que brilla, parece ser un objeto metalico, " +
                     "sobresaliendo del suelo del barranco. Al inspeccionarlo de cerca, parece una especie de herramienta...\n\n" +
@@ -128,7 +153,7 @@ public class Script_Micro : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.A)) { EstadoActual = Estados.ataque; }
     }
 
-    void ataque()
+    void Ataque()
     {
         texto.text = "Al comenzar a desenterrar el objeto metalico, pegas un grito llamando al Chofer para que te cubra la espalda.\n" +
         "Cuando este se acerca para ver que estas haciendo, reconoce que el objeto es, sin lugar a dudas, la herramienta " +

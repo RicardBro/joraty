@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Pausa_Scr : MonoBehaviour {
 
@@ -29,4 +31,16 @@ public class Pausa_Scr : MonoBehaviour {
         }
     
 	}
+
+    public void Menu()
+    {
+        GetComponent<AudioSource>().Play();
+        SceneManager.LoadScene("Escenario-MenuPrincpal");
+    }
+
+    public void Quit()
+    {
+        GetComponent<AudioSource>().Play();
+        Application.Quit();
+    }
 }
