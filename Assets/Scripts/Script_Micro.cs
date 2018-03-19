@@ -33,47 +33,47 @@ public class Script_Micro : MonoBehaviour
         switch (EstadoActual)
         {
             case (Estados.micro):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/Micro");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_micro");
                 Micro();
                 break;
 
             case (Estados.micro_r):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/Tauren");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_microR");
                 Micro_r();
                 break;
 
             case (Estados.chofer):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/SilverNoche");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_chofer");
                 Chofer();
                 break;
 
             case (Estados.linterna):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/Purga");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_linterna");
                 Linterna();
                 break;
 
             case (Estados.micro_linterna):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/PanSolido");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_micro_linterna");
                 Micro_linterna();
                 break;
 
             case (Estados.micro_r_linterna):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/Bobafett");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_microR_linterna");
                 Micro_r_linterna();
                 break;
 
             case (Estados.chofer_linterna):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/Chiste");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_chofer_linterna");
                 Chofer_linterna();
                 break;
 
             case (Estados.llave):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/Lali");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_llave");
                 Llave();
                 break;
 
             case (Estados.ataque):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/GG");
                 Ataque();
                 break;
             //*****
@@ -227,7 +227,6 @@ public class Script_Micro : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H)) { EstadoActual = Estados.ggchofer; }
         else if (Input.GetKeyDown(KeyCode.G)) { EstadoActual = Estados.hombres; }
         else if (Input.GetKeyDown(KeyCode.M)) { EstadoActual = Estados.mandarse; }
-
     }
 
     void Ggchofer()
@@ -236,8 +235,7 @@ public class Script_Micro : MonoBehaviour
                      "Le comentas, brevemente, sobre los beneficios de los ejercicios cardiovasculares. \n"+
                      "Presiona V para volver";
 
-        if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.defensa; }
-        
+        if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.defensa; }       
     }
 
     void Hombres()
@@ -249,7 +247,6 @@ public class Script_Micro : MonoBehaviour
                      "Presiona V para volver";
 
         if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.defensa; }
-
     }
 
     void Mandarse()
@@ -273,49 +270,64 @@ public class Script_Micro : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.H)) { EstadoActual = Estados.choferfull; }
         else if (Input.GetKeyDown(KeyCode.C)) { EstadoActual = Estados.hombresfull; }
-
     }
 
     void Choferfull()
     {
-        texto.text = "falta texto";
-
-        if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.mandarsefull; }
+        texto.text = "El chofer hace unas señales inentendibles mientras se adelanta, con lentitud, hacia la posición donde está el resto de los hombres. \n" +
+                     "Lleva en su mano la herramienta con la que cambió la rueda a modo de cachiporra. \n" +
+                     "Presiona V para Volver";
         
+        if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.mandarsefull; }
     }
 
     void Hombresfull()
     {
-        texto.text = "falta texto";
+        texto.text = "El grupo de zombies se dividió en 2.\n" +
+                     "Ahora un grupo de 2 se dirige hacia el chofer y los otros 3 hacia la posición de ustedes.\n"+
+                     "Escuchas a los hombres planeando hacer un asado al llegar a casa. \n" +
+                     "Presiona A para Atacar todos juntos, D para Dirigir al grupo a flanquear";
+;
         if (Input.GetKeyDown(KeyCode.D)) { EstadoActual = Estados.mandados; }
         else if (Input.GetKeyDown(KeyCode.A)) { EstadoActual = Estados.atacando; }
-   
     }
 
     void Mandados()
     {
-        texto.text = "falta texto";
+        texto.text = "Ordenas al grupo de hombres a cubrir el flanco izquierdo, posición donde el chofer espera temblando de pies a cabeza el ataque de los zombies. \n " +
+                     "Puedes observar cómo la gente dentro del micro mira horrorizada la situación.\n" +
+                     "Presiona H para Hablar con el chofer y V para Volver";
         if (Input.GetKeyDown(KeyCode.H)) { EstadoActual = Estados.chofermandados; }
         else if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.hombresfull; }
     }
 
     void Chofermandados()
     {
-        texto.text = "falta texto";
+        texto.text = "Preguntas al chofer, a los gritos, si necesita iluminación para la tarea que realiza. \n"+ 
+                     "Te contesta entre llanto, que necesita vacaciones, mientras se dispone a aguantar el ataque.\n"+
+                     "Presiona V para Volver";
         if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.mandados; }
     }
 
     void Atacando()
     {
-        texto.text = "falta texto";
+        texto.text = "Con renovada moral y  discutiendo si el chimichurri alcanza para todos, los 3 individuos se acercan a ti con la mirada en llamas,\n" +
+                     " al tiempo que te adelantas hacia el grupo de zombies que se dirigía al chofer.\n"+
+                     "Le gritas a este que prepare el micro para arrancar, mientras la señora con el ablandador de carne te ‘mira’ con cara de zombie. \n" +
+                     "Presiona A para Arrancar el micro o V para Volver";
         if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.hombresfull; }
         else if (Input.GetKeyDown(KeyCode.A)) { EstadoActual = Estados.choferatacando; }
     }
 
     void Choferatacando()
     {
-        texto.text = "falta texto";
-        //texto del final
+        texto.text = "El micro carraspea, tiembla, se mueve hacia los lados y escuchas ruidos de muertos en la puerta. Los gritos de los hombres mientras suben al micro,\n" +
+                     "te hacen estremecer y observas como los zombies se te abalanzan. \n" +
+                     "Logras golpear a la señora arrancando su cabeza y haciéndola caer sobre los demás, lo que te da tiempo a subir al micro, que ya está emprendiendo se marcha hacia la carretera.\n " +
+                     "La gente te ovaciona y continúan su ruta hacia casa, y hacía un buen Sandwich de Lomito.\n" +
+                     "Presiona M para ir al Menú Principal";
+
+        if (Input.GetKeyDown(KeyCode.M)) { SceneManager.LoadScene("Escenario-MenuPrincpal"); }
     }
 
 
