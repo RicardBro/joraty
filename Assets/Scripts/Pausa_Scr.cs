@@ -35,12 +35,25 @@ public class Pausa_Scr : MonoBehaviour {
     public void Menu()
     {
         GetComponent<AudioSource>().Play();
-        SceneManager.LoadScene("Escenario-MenuPrincpal");
+        Invoke("MenuPrincipal", GetComponent<AudioSource>().clip.length);
     }
 
     public void Quit()
     {
         GetComponent<AudioSource>().Play();
+        Invoke("Salir", GetComponent<AudioSource>().clip.length);
+    }
+
+    //Metodos de funciones
+
+    void MenuPrincipal()
+    {
+        SceneManager.LoadScene("Escenario-MenuPrincpal");
+    }
+    void Salir()
+    {
         Application.Quit();
     }
 }
+
+

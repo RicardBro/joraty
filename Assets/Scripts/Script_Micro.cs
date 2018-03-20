@@ -76,49 +76,49 @@ public class Script_Micro : MonoBehaviour
                 imagen.sprite = Resources.Load<Sprite>("Graphics/GG");
                 Ataque();
                 break;
-            //*****
+            //*****segunda parte
             case (Estados.defensa):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_defensa_gg");
                 Defensa();
                 break;
             case (Estados.ggchofer):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_chofer_gg");
                 Ggchofer();
                 break;
             case (Estados.hombres):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_hombres");
                 Hombres();
                 break;
             case (Estados.mandarse):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_zombies");
                 Mandarse();
                 break;
             case (Estados.mandarsefull):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_zombies_full");
                 Mandarsefull();
                 break;
             case (Estados.choferfull):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_chofer_full");
                 Choferfull();
                 break;
             case (Estados.hombresfull):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_hombres_full");
                 Hombresfull();
                 break;
             case (Estados.mandados):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_mandados");
                 Mandados();
                 break;
             case (Estados.chofermandados):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_chofer_mandados");
                 Chofermandados();
                 break;
             case (Estados.atacando):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_atacando");
                 Atacando();
                 break;
             case (Estados.choferatacando):
-                imagen.sprite = Resources.Load<Sprite>("Graphics/TronoHelado");
+                imagen.sprite = Resources.Load<Sprite>("Graphics/state_chofer_arrancar");
                 Choferatacando();
                 break;
         }
@@ -222,11 +222,11 @@ public class Script_Micro : MonoBehaviour
         texto.text = "El chofer se apresura a cambiar la cubierta rota, mientras vos y un grupo de otros 3 hombres, \n " +
                       "armados con palas y algunos palos, se preparan a defender el micro. \n " +
                       "Desde el bosque se puede observar un grupo de 4 muertos, casi todos completos. Uno de ellos tiene un bigote imponente. \n" +
-                      "Presiona H para hablar con el Chofer, G para hablar con los tipos, M para Mandarse";
+                      "Presiona G para hablar con el Grupo, H para Hablar con el chofer y Z para adelantarte hacia los Zombies";
 
         if (Input.GetKeyDown(KeyCode.H)) { EstadoActual = Estados.ggchofer; }
         else if (Input.GetKeyDown(KeyCode.G)) { EstadoActual = Estados.hombres; }
-        else if (Input.GetKeyDown(KeyCode.M)) { EstadoActual = Estados.mandarse; }
+        else if (Input.GetKeyDown(KeyCode.Z)) { EstadoActual = Estados.mandarse; }
     }
 
     void Ggchofer()
@@ -254,10 +254,10 @@ public class Script_Micro : MonoBehaviour
         texto.text = "Reunes todo tu valor, y armado  con una pala de mano que te alcanzo un compañero y tu linterna, te adelantas unos pasos hacia el grupo de  muertos. \n" +
                      "Los hombres que te acompañan te miran extrañados, no sabiendo qué hacer y remitiéndose a mantener la posición.\n" +
                      "El chofer tiene un extraño color blanco/amarillo en su rostro... \n" +
-                     "Presiona V para volver, M para ir con todo";
+                     "Presiona Z para enfrentar al Zombie o V para volver";
 
         if (Input.GetKeyDown(KeyCode.V)) { EstadoActual = Estados.defensa; }
-        else if (Input.GetKeyDown(KeyCode.M)) { EstadoActual = Estados.mandarsefull; }
+        else if (Input.GetKeyDown(KeyCode.Z)) { EstadoActual = Estados.mandarsefull; }
     }
 
     void Mandarsefull()
@@ -266,7 +266,7 @@ public class Script_Micro : MonoBehaviour
                      "(En vida una señora mayor, que sostiene en su mano un martillo para ablandar carne). \n" +
                      "El grupo de hombre a tus espaldas grita cosas indescifrables, y en tu estado de locura, solo son un murmullo en las tinieblas. \n" +
                      "Tu visión panorámica se encuentra reducida considerablemente. \n" +
-                     "Presiona H para hablar con el Chofer, C para hablar con los tipos";
+                     "Presiona C para pedir por Cobertura o H para Hablar con el chofer";
         
         if (Input.GetKeyDown(KeyCode.H)) { EstadoActual = Estados.choferfull; }
         else if (Input.GetKeyDown(KeyCode.C)) { EstadoActual = Estados.hombresfull; }
