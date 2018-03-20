@@ -4,28 +4,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuPrincipal : MonoBehaviour {
-    
-    public void PlayScene() {
+public class MenuPrincipal : MonoBehaviour
+{
+
+    public void PlayScene(){
         GetComponent<AudioSource>().Play();
-        SceneManager.LoadScene("Escenario-MicroAveriado");
+        Invoke("Nuevojuego", GetComponent<AudioSource>().clip.length);   
     }
 
-    public void Cargar()
-    {
+        void Nuevojuego(){
+            SceneManager.LoadScene("Escenario-MicroAveriado");
+        }
+
+    public void Opciones(){
         GetComponent<AudioSource>().Play();
         //Application.Quit();
     }
 
-    public void Opciones()
-    {
+    public void Quit(){
         GetComponent<AudioSource>().Play();
-        //Application.Quit();
+        Invoke("Salir", GetComponent<AudioSource>().clip.length);
     }
-
-    public void Quit()
-    {
-        GetComponent<AudioSource>().Play();
-        Application.Quit();
-    }
+        void Salir(){
+            Application.Quit();
+        }
 }
